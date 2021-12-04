@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+
+    semantika-morph:
+        restart: always
+        container_name: my-semantika-morph
+        image: semantikadocker.vdu.lt/v2/morph:0.2
+        ports:
+            - "1122:8090"
+
+    semantka-lex:
+        restart: always
+        container_name: my-semantika-lex
+        image: semantikadocker.vdu.lt/lex
+        ports:
+            - "1123:8080"
+
+    lemmatization-api:
+        build: ./api
+        image: lemmatization-api:latest
+        restart: always
+        container_name: my-lemmatization-api
+        ports:
+            - "5000:8080"
+
